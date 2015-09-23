@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -48,7 +50,9 @@ public class Ecran extends JPanel implements Runnable{
 	
 	
 	public void conditie(){
+		System.out.println(contor);
 		if(contor==1){
+			
 			if(conditieOdata==true){
 			int z=3;
 			for(int j=0;j<3;j++){
@@ -87,6 +91,10 @@ public class Ecran extends JPanel implements Runnable{
 	}
 	
 	public void paintComponent(Graphics g){
+		if(g instanceof Graphics2D){
+			Graphics2D g2 = (Graphics2D)g;
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		}
 		g.drawImage(background_image, 0, 0,getWidth(),getHeight(),null);
 		g.drawRect(marimeCerc * coloana + spatiuButon,spatiuButon,lungimeButon,latimeButon);
 		g.drawImage(button_image,marimeCerc * coloana + spatiuButon,spatiuButon,lungimeButon,latimeButon,null);
@@ -126,7 +134,7 @@ public class Ecran extends JPanel implements Runnable{
 	if(( turaOdata && x2>coloana * marimeCerc && y2 > spatiuButon && x2<coloana * marimeCerc + lungimeButon && y2<spatiuButon + latimeButon)){
 		x = 6;
 		y = 6;
-		if(turaIncaOdata){
+		if(contor!=0){
 		turaUrmatoare();
 		}
 		Click.x2=0;
@@ -230,14 +238,33 @@ public class Ecran extends JPanel implements Runnable{
 	
 	public void run() {
 		while(true){
-			repaint();
+			
 			if(contorCastig == 12){
 				if(tura == 1){
 					System.out.println(jucator + " a castigat");
+					matrice[x][y]= new Obiect(x*marimeCerc,y*marimeCerc,marimeCerc,marimeCerc,0);
+					try {
+						fir.sleep(100);
+						matrice[x][y].id=1;
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}else if(tura == 2){
 					System.out.println(jucator  + " a castigat");
+					matrice[x][y]= new Obiect(x*marimeCerc,y*marimeCerc,marimeCerc,marimeCerc,0);
+					try {
+						fir.sleep(100);
+						matrice[x][y].id=2;
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				}
 			}
+			repaint();
 		}
 		
 	}

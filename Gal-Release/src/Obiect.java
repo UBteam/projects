@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class Obiect {
 
-	public  int id;
+	public int id;
 	public int x;
 	public int y;
 	public int w;
@@ -12,6 +12,9 @@ public class Obiect {
 	
 	public boolean bifat;
 	public boolean bifabil;
+	
+	
+
 	
 	
 	public Obiect(int x, int y,int w,int h,int id){

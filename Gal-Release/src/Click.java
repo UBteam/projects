@@ -34,11 +34,12 @@ public class Click implements MouseListener{
 		
 		x=e.getX()/Ecran.marimeCerc;
 		y=e.getY()/Ecran.marimeCerc;
+		
 		x2=e.getX();
 		y2=e.getY();
 		
 		
-		System.out.println(x + " " + y);
+		//System.out.println(x + " " + y);
 		
 		if((x<Ecran.rand && y<Ecran.rand) || (x==Ecran.rand && y==1) || (x==Ecran.rand && y==2) || (x==Ecran.rand+1 && y==2) ){
 			odata = false;

@@ -15,6 +15,8 @@ public class Main {
 		fereastra.setSize(LUNGIME_FEREASTRA, LATIME_FEREASTRA);
 		fereastra.setVisible(true);
 		fereastra.setDefaultCloseOperation(fereastra.EXIT_ON_CLOSE);
+		fereastra.setResizable(false);
+		fereastra.setLocationRelativeTo(null);
 	}
 
 	public static void main(String[] args) {
